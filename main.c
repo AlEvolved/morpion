@@ -30,21 +30,26 @@ void initialiserPlateau() {
 }
 
 int TourJoueur() {
-    int ligne, col; 
+    int ligne, col;
 
-    afficherGrille();  
-    printf("Votre tour ( ligne ) (colonne) : ");
-    scanf("%d %d", &ligne, &col);  
+    while (1) {  
+        afficherGrille();  
+        printf("A votre tour ! Choisissez une ligne (1-3) : ");
+        scanf("%d", &ligne);
+        printf("Puis choisissez une colonne (1-3) : ");
+        scanf("%d", &col);
 
-    ligne--;  
-    col--;    
+        
+        ligne--;  
+        col--;    
 
-    if (ligne >= 0 && ligne < taille && col >= 0 && col < taille && plateau[ligne][col] == ' ') {
-        plateau[ligne][col] = 'X';  // Le joueur place un 'X' sur le plateau
-        return 1;  // Le tour est réussi
-    } else {
-        printf("Case déjà occupée ou invalide. Essayez à nouveau.\n");
-        return 0;  // Tour non réussi
+       
+        if (ligne >= 0 && ligne < taille && col >= 0 && col < taille && plateau[ligne][col] == ' ') {
+            plateau[ligne][col] = 'X'; 
+            return 1;  
+        } else {
+            printf("Case déjà occupée ou invalide. Essayez à nouveau.\n");
+        }
     }
 }
 
